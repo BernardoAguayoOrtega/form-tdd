@@ -1,6 +1,11 @@
 export const Form = () => {
 
   return (
-    <form></form>
+    <>
+      <h1>created product</h1>
+      <form>
+
+      </form>
+    </>
   )
 }
