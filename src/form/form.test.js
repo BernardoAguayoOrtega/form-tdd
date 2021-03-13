@@ -8,11 +8,12 @@ describe('Form', () => {
 			expect(getByRole('heading', { name: /created product/i })).toBeTruthy();
 		});
 
-    it('should exists the fields: name, size, type (electronic, furniture, clothing)', () => {
-      const { getByLabelText } = render(<Form />);
-      expect(getByLabelText(/name/i)).toBeTruthy();
-      expect(getByLabelText(/size/i)).toBeTruthy();
-      expect(getByLabelText(/type/i)).toBeTruthy();
-    })
+		it('should exists the fields: name, size, type (electronic, furniture, clothing,)', () => {
+			const { getByLabelText } = render(<Form />);
+
+			expect(getByLabelText(/name/i)).toBeTruthy();
+			expect(getByLabelText(/size/i)).toBeTruthy();
+			expect(getByLabelText(/type/i)).toBeTruthy();
+		});
 	});
 });
