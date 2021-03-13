@@ -27,6 +27,7 @@ describe('Form', () => {
 	describe('when the user submit the form without values', () => {
 		it('should display validation messages', () => {
 			const {getByRole, queryByText} = render(<Form />)
+			expect(queryByText(/the name is required/i)).toBeNull()
 			fireEvent.click(getByRole('button', { name: /submit/i }))
 			expect(queryByText(/the name is required/i)).toBeTruthy()
 		})

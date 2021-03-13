@@ -1,13 +1,28 @@
 import { TextField, InputLabel, Select, Button } from "@material-ui/core"
+import { useState } from "react";
 
 export const Form = () => {
+  const [formErrors, setFormErrors] = useState({
+    name: '',
+    size: '',
+    type: ''
+  })
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { name, size, type } = event.target.elements
+
+    !name.value && setFormErrors(prevState => ({ ...prevState, name: 'the name is required' }))
+
+  }
 
   return (
     <>
       <h1>created product</h1>
-      <form>
-        <TextField label="name" id="name" helperText="the name is required"/>
-        <TextField label="size" id="size"/>
+      <form onSubmit={handleSubmit}>
+        <TextField label="name" id="name" helperText={formErrors.name} />
+        <TextField label="size" id="size" />
         <InputLabel htmlFor="type">Type</InputLabel>
         <Select
           native
@@ -22,7 +37,7 @@ export const Form = () => {
           <option value='furniture'>furniture</option>
           <option value='clothing'>clothing</option>
         </Select>
-        <Button>Submit</Button>
+        <Button type="submit">Submit</Button>
       </form>
     </>
   )
