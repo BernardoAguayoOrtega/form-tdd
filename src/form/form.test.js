@@ -11,6 +11,8 @@ describe('Form', () => {
     it('should exists the fields: name, size, type (electronic, furniture, clothing)', () => {
       const { getByLabelText } = render(<Form />);
       expect(getByLabelText(/name/i)).toBeTruthy();
+      expect(getByLabelText(/size/i)).toBeTruthy();
+      expect(getByLabelText(/type/i)).toBeTruthy();
     })
 	});
 });
