@@ -9,11 +9,15 @@ describe('Form', () => {
 		});
 
 		it('should exists the fields: name, size, type (electronic, furniture, clothing,)', () => {
-			const { getByLabelText } = render(<Form />);
+			const { getByLabelText, queryByText } = render(<Form />);
 
 			expect(getByLabelText(/name/i)).toBeTruthy();
 			expect(getByLabelText(/size/i)).toBeTruthy();
 			expect(getByLabelText(/type/i)).toBeTruthy();
+
+			expect(queryByText(/electronic/i)).toBeTruthy();
+			expect(queryByText(/furniture/i)).toBeTruthy();
+			expect(queryByText(/clothing/i)).toBeTruthy();
 		});
 	});
 });
