@@ -29,9 +29,11 @@ describe('Form', () => {
 			const {getByRole, queryByText} = render(<Form />)
 			expect(queryByText(/the name is required/i)).toBeNull()
 			expect(queryByText(/the size is required/i)).toBeNull()
+			expect(queryByText(/the type is required/i)).toBeNull()
 			fireEvent.click(getByRole('button', { name: /submit/i }))
 			expect(queryByText(/the name is required/i)).toBeTruthy()
 			expect(queryByText(/the size is required/i)).toBeTruthy()
+			expect(queryByText(/the type is required/i)).toBeTruthy()
 		})
 	})
 });
