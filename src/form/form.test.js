@@ -1,5 +1,5 @@
 import { Form } from './Form';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 describe('Form', () => {
 	describe('when the form is mounted', () => {
@@ -24,4 +24,11 @@ describe('Form', () => {
 			expect(getByRole('button', { name: /submit/i })).toBeTruthy();
 		});
 	});
+	describe('when the user submit the form without values', () => {
+		it('should display validation messages', () => {
+			const {getByRole, queryByText} = render(<Form />)
+			fireEvent.click(getByRole('button', { name: /submit/i }))
+			expect(queryByText(/the name is required/i)).toBeTruthy()
+		})
+	})
 });

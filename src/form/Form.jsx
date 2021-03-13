@@ -6,7 +6,7 @@ export const Form = () => {
     <>
       <h1>created product</h1>
       <form>
-        <TextField label="name" id="name"/>
+        <TextField label="name" id="name" helperText="the name is required"/>
         <TextField label="size" id="size"/>
         <InputLabel htmlFor="type">Type</InputLabel>
         <Select
