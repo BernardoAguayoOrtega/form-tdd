@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Form } from './Form';
 
 describe('when the form is mounted', () => {
@@ -20,5 +20,14 @@ describe('when the form is mounted', () => {
 	it('should exists submit button', () => {
 		const { getByRole } = render(<Form />);
 		expect(getByRole('button', { name: /submit/i })).not.toBeNull();
+	});
+});
+
+describe('when the use submit the form without values', () => {
+	it('should display validation messages', () => {
+		const { getByRole, queryByText } = render(<Form />);
+		expect(queryByText(/the name is required/i)).toBeNull();
+		fireEvent.click(getByRole('button', { name: /submit/i }));
+		expect(queryByText(/the name is required/i)).not.toBeNull();
 	});
 });
