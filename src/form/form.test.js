@@ -17,4 +17,8 @@ describe('when the form is mounted', () => {
 		expect(queryByText(/furniture/i)).not.toBeNull();
 		expect(queryByText(/clothing/i)).not.toBeNull();
 	});
+	it('should exists submit button', () => {
+		const { getByRole } = render(<Form />);
+		expect(getByRole('button', { name: /submit/i })).not.toBeNull();
+	});
 });
