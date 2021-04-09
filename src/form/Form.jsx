@@ -1,0 +1,1 @@
+export const Form = () => <div>create product</div>
