@@ -27,7 +27,11 @@ describe('when the use submit the form without values', () => {
 	it('should display validation messages', () => {
 		const { getByRole, queryByText } = render(<Form />);
 		expect(queryByText(/the name is required/i)).toBeNull();
+		expect(queryByText(/the size is required/i)).toBeNull();
+		expect(queryByText(/the type is required/i)).toBeNull();
 		fireEvent.click(getByRole('button', { name: /submit/i }));
 		expect(queryByText(/the name is required/i)).not.toBeNull();
+		expect(queryByText(/the size is required/i)).not.toBeNull();
+		expect(queryByText(/the type is required/i)).not.toBeNull();
 	});
 });

@@ -15,6 +15,8 @@ export const Form = () => {
     const { name, size, type } = event.target.elements
 
     if (!name.value) setFormErrors(prevState => ({ ...prevState, name: 'the name is required' }))
+    if (!size.value) setFormErrors(prevState => ({ ...prevState, size: 'the size is required' }))
+    if (!type.value) setFormErrors(prevState => ({ ...prevState, type: 'the type is required' }))
   }
 
   return (
@@ -22,7 +24,7 @@ export const Form = () => {
       <h1>create product</h1>
       <form onSubmit={handleSubmit}>
         <TextField label="name" id="name" helperText={formErrors.name} />
-        <TextField label="size" id="size" />
+        <TextField label="size" id="size" helperText={formErrors.size} />
         <InputLabel htmlFor="type">Type</InputLabel>
         <Select
           native
@@ -37,6 +39,7 @@ export const Form = () => {
           <option value='furniture'>furniture</option>
           <option value='clothing'>clothing</option>
         </Select>
+        <small>{formErrors.type}</small>
 
         <Button type="submit">submit</Button>
       </form>
