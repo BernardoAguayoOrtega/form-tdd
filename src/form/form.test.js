@@ -35,3 +35,23 @@ describe('when the use submit the form without values', () => {
 		expect(queryByText(/the type is required/i)).not.toBeNull();
 	});
 });
+
+describe('when the use blurs an empty field', () => {
+	it('should display validation messages input name', () => {
+		const { queryByText, getByLabelText } = render(<Form />);
+
+		fireEvent.blur(getByLabelText(/name/i), {
+			target: { id: 'name', value: '' },
+		});
+		expect(queryByText(/the name is required/i)).not.toBeNull();
+	});
+
+	it('should display validation messages input size', () => {
+		const { queryByText, getByLabelText } = render(<Form />);
+
+		fireEvent.blur(getByLabelText(/size/i), {
+			target: { id: 'size', value: '' },
+		});
+		expect(queryByText(/the size is required/i)).not.toBeNull();
+	});
+});

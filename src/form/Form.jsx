@@ -19,12 +19,17 @@ export const Form = () => {
     if (!type.value) setFormErrors(prevState => ({ ...prevState, type: 'the type is required' }))
   }
 
+  const handleBlur = (event) => {
+    const { id, value } = event.target
+    setFormErrors(prevState => ({ ...prevState, [id]: value?.length ? '' : `the ${id} is required` }))
+  }
+
   return (
     <>
       <h1>create product</h1>
       <form onSubmit={handleSubmit}>
-        <TextField label="name" id="name" helperText={formErrors.name} />
-        <TextField label="size" id="size" helperText={formErrors.size} />
+        <TextField label="name" id="name" helperText={formErrors.name} onBlur={handleBlur} />
+        <TextField label="size" id="size" helperText={formErrors.size} onBlur={handleBlur} />
         <InputLabel htmlFor="type">Type</InputLabel>
         <Select
           native
